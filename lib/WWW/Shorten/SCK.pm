@@ -26,7 +26,6 @@ use 5.006;
 
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT  = qw( makeashorterlink makealongerlink );
-our $VERSION = '1.90';
 
 use Carp;
 
@@ -41,7 +40,7 @@ sub makeashorterlink {
     my $url     = shift or croak 'No URL passed to makeashorterlink';
     my $ua      = __PACKAGE__->ua();
     my $sck_url = 'http://sck.to';
-    my $resp    = $ua->get(
+    my $resp    = $ua->post(
         $sck_url,
         [
             a   => 1,
@@ -76,9 +75,9 @@ sub makealongerlink {
       unless $sck_url =~ m!^http://!i;
 
     #short should contain sck.to
-    return unless $sck_url = qr{^\Qhttp://sck.to/\E};
+    return unless $sck_url =~ qr{\Qhttp://sck.to/\E};
 
-    my $resp = $ua->get( $sck_url, [ a => 1 ] );
+    my $resp = $ua->get( $sck_url."?a=1" );
 
     return unless $resp->is_success;
     return $resp->content;
