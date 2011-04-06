@@ -1,11 +1,7 @@
 use strict;
 use warnings;
 
-# ABSTRACT : SCK shorten url
-
-=head1 NAME
-
-WWW::Shorten::SCK - Perl interface to sck.to
+# ABSTRACT: WWW::Shorten::SCK - Perl interface to sck.to
 
 =head1 SYNOPSIS
 
@@ -64,7 +60,7 @@ The function C<makealongerlink> does the reverse. C<makealongerlink>
 will accept as an argument either the full SCK URL or just the
 SCK identifier.
 
-If anything goes wrong, then either function will return C<undef>.
+If anything goes wrong, then either function will return nothing.
 
 =cut
 
@@ -93,10 +89,6 @@ __END__
 =head1 SUPPORT, LICENCE, THANKS and SUCH
 
 See the main L<WWW::Shorten> docs.
-
-=head1 AUTHOR
-
-Celogeek <geistteufel@yahoo.fr>
 
 =head1 SEE ALSO
 
