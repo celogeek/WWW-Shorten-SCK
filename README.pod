@@ -1,0 +1,9 @@
+=head1 DESCRIPTION
+
+WWW::Shorten::SCK is a Perl interface to use sck.to shorten url service
+
+=head1 AUTHORS
+
+Celogeek <geistteufel@yahoo.fr>
+
+=cut
