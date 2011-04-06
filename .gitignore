@@ -1,6 +1,6 @@
 *.swp
 .build
-WWW::Shorten::SCK*
+WWW-Shorten-SCK*
 *.bak
 *.tdy
 
