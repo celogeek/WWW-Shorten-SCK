@@ -8,6 +8,8 @@ use warnings;
     use WWW::Shorten::SCK;
     use WWW::Shorten 'SCK';
 
+    my $long_url = "a long url";
+    my $short_url = "";
     $short_url = makeashorterlink($long_url);
     $long_url = makealongerlink($short_url);
 
@@ -86,7 +88,7 @@ sub makealongerlink {
 
 __END__
 
-=head1 SUPPORT, LICENCE, THANKS and SUCH
+=head1 SUPPORT, LICENSE, THANKS and SUCH
 
 See the main L<WWW::Shorten> docs.
 
