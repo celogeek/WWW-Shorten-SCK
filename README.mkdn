@@ -1,0 +1,56 @@
+# NAME
+
+WWW::Shorten::SCK - WWW::Shorten::SCK - Perl interface to sck.to
+
+# VERSION
+
+version 0.002
+
+# SYNOPSIS
+
+    use WWW::Shorten::SCK;
+    use WWW::Shorten 'SCK';
+
+    my $long_url = "a long url";
+    my $short_url = "";
+    $short_url = makeashorterlink($long_url);
+    $long_url = makealongerlink($short_url);
+
+# DESCRIPTION
+
+A Perl interface to the web sck.to. SCK keep a database of long URLs,
+and give you a tiny one.
+
+# METHODS
+
+## makeashorterlink
+
+The function `makeashorterlink` will call the SCK web site passing
+it your long URL and will return the shorter SCK version.
+
+## makealongerlink
+
+The function `makealongerlink` does the reverse. `makealongerlink`
+will accept as an argument either the full SCK URL or just the
+SCK identifier.
+
+If anything goes wrong, then either function will return nothing.
+
+# SUPPORT, LICENSE, THANKS and SUCH
+
+See the main [WWW::Shorten](http://search.cpan.org/perldoc?WWW::Shorten) docs.
+
+# SEE ALSO
+
+[WWW::Shorten](http://search.cpan.org/perldoc?WWW::Shorten), [perl](http://search.cpan.org/perldoc?perl), [http://sck.to/](http://sck.to/)
+
+# AUTHOR
+
+celogeek <me@celogeek.com>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by celogeek <me@celogeek.com>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
