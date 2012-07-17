@@ -1,10 +1,10 @@
 # NAME
 
-WWW::Shorten::SCK - WWW::Shorten::SCK - Perl interface to sck.to
+WWW::Shorten::SCK - Perl interface to sck.to
 
 # VERSION
 
-version 0.1
+version 0.2
 
 # SYNOPSIS
 
