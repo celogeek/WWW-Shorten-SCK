@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.1       2012-07-17 15:49:14 Europe/Paris
+
     use Dist::Zilla::PluginBundle::Author::Celogeek v0.7
     set bundle version number
 

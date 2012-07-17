@@ -4,11 +4,10 @@ WWW::Shorten::SCK - WWW::Shorten::SCK - Perl interface to sck.to
 
 # VERSION
 
-version 0.002
+version 0.1
 
 # SYNOPSIS
 
-    use WWW::Shorten::SCK;
     use WWW::Shorten 'SCK';
 
     my $long_url = "a long url";
@@ -43,6 +42,15 @@ See the main [WWW::Shorten](http://search.cpan.org/perldoc?WWW::Shorten) docs.
 # SEE ALSO
 
 [WWW::Shorten](http://search.cpan.org/perldoc?WWW::Shorten), [perl](http://search.cpan.org/perldoc?perl), [http://sck.to/](http://sck.to/)
+
+# BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/celogeek/WWW-Shorten-SCK/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 # AUTHOR
 
