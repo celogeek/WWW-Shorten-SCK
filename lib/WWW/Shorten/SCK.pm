@@ -7,7 +7,6 @@ use warnings;
 
 =head1 SYNOPSIS
 
-    use WWW::Shorten::SCK;
     use WWW::Shorten 'SCK';
 
     my $long_url = "a long url";
@@ -24,8 +23,10 @@ and give you a tiny one.
 
 use 5.006;
 
-use base qw( WWW::Shorten::generic Exporter );
-our @EXPORT  = qw( makeashorterlink makealongerlink );
+use parent qw( WWW::Shorten::generic Exporter );
+use vars qw(@EXPORT_OK %EXPORT_TAGS);
+@EXPORT_OK  = qw( makeashorterlink makealongerlink );
+%EXPORT_TAGS = ( all => [@EXPORT_OK] );
 
 use Carp;
 
@@ -49,7 +50,7 @@ sub makeashorterlink {
     );
     return unless $resp->is_success;
     my $content = $resp->content;
-    if ( $content =~ qr{\Qhttp://sck.to/\E} ) {
+    if ( $content =~ qr{\Qhttp://sck.to/\E}x ) {
         return $content;
     }
     return;
@@ -72,10 +73,10 @@ sub makealongerlink {
 
     #call api to get long url from the short
     $sck_url = "http://sck.to/$sck_url"
-      unless $sck_url =~ m!^http://!i;
+      unless $sck_url =~ m!^http://!ix;
 
     #short should contain sck.to
-    return unless $sck_url =~ qr{\Qhttp://sck.to/\E};
+    return unless $sck_url =~ qr{\Qhttp://sck.to/\E}x;
 
     my $resp = $ua->get( $sck_url."?a=1" );
 

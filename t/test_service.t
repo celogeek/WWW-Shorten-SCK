@@ -3,7 +3,7 @@ use warnings;
 
 use Carp;
 use Test::More tests => 2;                      # last test to print
-use WWW::Shorten "SCK";
+use WWW::Shorten 'SCK';
 
 my $long_url = "http://qa.celogeek.com/";
 my $short_url = "http://sck.to/g/vJcSy";
