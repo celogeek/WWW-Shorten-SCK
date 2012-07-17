@@ -1,5 +1,7 @@
+package WWW::Shorten::SCK;
 use strict;
 use warnings;
+# VERSION
 
 # ABSTRACT: WWW::Shorten::SCK - Perl interface to sck.to
 
@@ -19,8 +21,6 @@ A Perl interface to the web sck.to. SCK keep a database of long URLs,
 and give you a tiny one.
 
 =cut
-
-package WWW::Shorten::SCK;
 
 use 5.006;
 

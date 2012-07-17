@@ -3,12 +3,12 @@
     use Dist::Zilla::PluginBundle::Author::Celogeek v0.7
 
 
-0.002 2012-06-09 11:07
+0.2 2012-06-09 11:07
 ====
 
     * Change author name
 
-0.001 2011-04-06 15:00
+0.1 2011-04-06 15:00
 ====
 
     * First release
