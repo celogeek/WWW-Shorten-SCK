@@ -3,7 +3,7 @@ use strict;
 use warnings;
 # VERSION
 
-# ABSTRACT: WWW::Shorten::SCK - Perl interface to sck.to
+# ABSTRACT: Perl interface to sck.to
 
 =head1 SYNOPSIS
 
