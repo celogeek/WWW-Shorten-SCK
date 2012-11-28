@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+    * rewrite meta
+
 0.2       2012-07-17 16:01:00 Europe/Paris
 
     fix pod
@@ -10,13 +12,3 @@
     set bundle version number
 
 
-0.002 2012-06-09 11:07
-====
-
-    * Change author name
-
-0.001 2011-04-06 15:00
-====
-
-    * First release
-    * Connect to SCK.to shorten url service
