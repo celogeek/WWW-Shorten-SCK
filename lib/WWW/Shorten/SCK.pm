@@ -1,6 +1,7 @@
 package WWW::Shorten::SCK;
 use strict;
 use warnings;
+use URI::Escape qw/uri_escape_utf8/;
 # VERSION
 
 # ABSTRACT: Perl interface to sck.to
@@ -42,11 +43,7 @@ sub makeashorterlink {
     my $ua      = __PACKAGE__->ua();
     my $sck_url = 'http://sck.to';
     my $resp    = $ua->get(
-        $sck_url,
-        [
-            a   => 1,
-            url => $url,
-        ]
+        $sck_url . '?a=1&url=' . uri_escape_utf8($url),
     );
     return unless $resp->is_success;
     my $content = $resp->content;
@@ -80,8 +77,7 @@ sub makealongerlink {
 
     my $resp = $ua->get( $sck_url."?a=1" );
 
-    return unless $resp->is_success;
-    return $resp->content;
+    return $resp->header('location');
 }
 
 1;
