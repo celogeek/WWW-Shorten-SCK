@@ -41,7 +41,7 @@ sub makeashorterlink {
     my $url     = shift or croak 'No URL passed to makeashorterlink';
     my $ua      = __PACKAGE__->ua();
     my $sck_url = 'http://sck.to';
-    my $resp    = $ua->post(
+    my $resp    = $ua->get(
         $sck_url,
         [
             a   => 1,
