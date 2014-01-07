@@ -2,9 +2,10 @@ package WWW::Shorten::SCK;
 use strict;
 use warnings;
 use URI::Escape qw/uri_escape_utf8/;
+use JSON;
 # VERSION
 
-# ABSTRACT: Perl interface to sck.to
+# ABSTRACT: Perl interface to sck.pm
 
 =head1 SYNOPSIS
 
@@ -17,7 +18,7 @@ use URI::Escape qw/uri_escape_utf8/;
 
 =head1 DESCRIPTION
 
-A Perl interface to the web sck.to. SCK keep a database of long URLs,
+A Perl interface to the web sck.pm. SCK keep a database of long URLs,
 and give you a tiny one.
 
 =cut
@@ -41,14 +42,14 @@ it your long URL and will return the shorter SCK version.
 sub makeashorterlink {
     my $url     = shift or croak 'No URL passed to makeashorterlink';
     my $ua      = __PACKAGE__->ua();
-    my $sck_url = 'http://sck.to';
+    my $sck_url = 'http://api.sck.pm';
     my $resp    = $ua->get(
-        $sck_url . '?a=1&url=' . uri_escape_utf8($url),
+        $sck_url . '?url=' . uri_escape_utf8($url),
     );
     return unless $resp->is_success;
-    my $content = $resp->content;
-    if ( $content =~ qr{\Qhttp://sck.to/\E}x ) {
-        return $content;
+    my $content = decode_json($resp->content);
+    if (ref $content && $content->{status} eq 'OK') {
+        return 'http://sck.pm/' . $content->{short};
     }
     return;
 }
@@ -69,15 +70,17 @@ sub makealongerlink {
     my $ua = __PACKAGE__->ua();
 
     #call api to get long url from the short
-    $sck_url = "http://sck.to/$sck_url"
-      unless $sck_url =~ m!^http://!ix;
+    $sck_url = substr($sck_url, 14) if substr($sck_url, 0, 14) eq 'http://sck.pm/';
 
-    #short should contain sck.to
-    return unless $sck_url =~ qr{\Qhttp://sck.to/\E}x;
 
-    my $resp = $ua->get( $sck_url."?a=1" );
+    my $resp = $ua->get( "http://api.sck.pm?surl=$sck_url" );
+    return unless $resp->is_success;
+    my $content = decode_json($resp->content);
+    if (ref $content && $content->{status} eq 'OK') {
+        return $content->{url};
+    }
+    return;
 
-    return $resp->header('location');
 }
 
 1;
@@ -90,7 +93,7 @@ See the main L<WWW::Shorten> docs.
 
 =head1 SEE ALSO
 
-L<WWW::Shorten>, L<perl>, L<http://sck.to/>
+L<WWW::Shorten>, L<perl>, L<http://sck.pm/>
 
 =cut
 
