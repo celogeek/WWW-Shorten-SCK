@@ -42,14 +42,14 @@ it your long URL and will return the shorter SCK version.
 sub makeashorterlink {
     my $url     = shift or croak 'No URL passed to makeashorterlink';
     my $ua      = __PACKAGE__->ua();
-    my $sck_url = 'http://api.sck.pm';
+    my $sck_url = 'https://api.sck.pm';
     my $resp    = $ua->get(
-        $sck_url . '?url=' . uri_escape_utf8($url),
+        $sck_url . '/shorten?' . $url,
     );
     return unless $resp->is_success;
     my $content = decode_json($resp->content);
     if (ref $content && $content->{status} eq 'OK') {
-        return 'http://sck.pm/' . $content->{short};
+        return $content->{short_url};
     }
     return;
 }
@@ -70,10 +70,11 @@ sub makealongerlink {
     my $ua = __PACKAGE__->ua();
 
     #call api to get long url from the short
-    $sck_url = substr($sck_url, 14) if substr($sck_url, 0, 14) eq 'http://sck.pm/';
+    if ($sck_url =~ /^https?:\/\/sck.pm\/(.*)$/x) {
+        $sck_url = $1;
+    }
 
-
-    my $resp = $ua->get( "http://api.sck.pm?surl=$sck_url" );
+    my $resp = $ua->get( "https://api.sck.pm/expand?" . $sck_url );
     return unless $resp->is_success;
     my $content = decode_json($resp->content);
     if (ref $content && $content->{status} eq 'OK') {
@@ -93,7 +94,7 @@ See the main L<WWW::Shorten> docs.
 
 =head1 SEE ALSO
 
-L<WWW::Shorten>, L<perl>, L<http://sck.pm/>
+L<WWW::Shorten>, L<perl>, L<https://www.sck.pm/>
 
 =cut
 
