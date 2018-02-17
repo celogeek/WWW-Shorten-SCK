@@ -4,7 +4,7 @@ WWW::Shorten::SCK - Perl interface to sck.pm
 
 # VERSION
 
-version 0.6
+version 0.7
 
 # SYNOPSIS
 
