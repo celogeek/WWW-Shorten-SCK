@@ -1,6 +1,7 @@
 package WWW::Shorten::SCK;
 use strict;
 use warnings;
+use LWP::Protocol::https;
 use URI::Escape qw/uri_escape_utf8/;
 use JSON;
 # VERSION
